@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/jindong"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.alaskalinuxuser.justcraigslist.WebViewActivity"
+    tools:showIn="@layout/activity_web_view">
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Posting"
+        android:gravity="center"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/waitingImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/waiticon" />
+</LinearLayout>
