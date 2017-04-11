@@ -40,9 +40,9 @@ import java.util.regex.Pattern;
 
 public class WebListActivity extends AppCompatActivity {
 
-    String theSearchTerm, result;
+    String theSearchTerm, result, myResult;
     ListView searchListView;
-    ArrayList<String> searchArrayList, searchURLList, searchPicList;
+    ArrayList<String> searchArrayList, searchURLList;
     ArrayAdapter<String> SearchAdapter;
     ImageView waitImage;
     Boolean notdone;
@@ -90,6 +90,9 @@ public class WebListActivity extends AppCompatActivity {
 
                 }
 
+                // Let's copy the results so we can pass them on.
+                myResult = result;
+
                 // Now that we have the info, let's split it into useful chunks.
                 String[] splitString = result.split("item rdf:about=");
 
@@ -101,7 +104,6 @@ public class WebListActivity extends AppCompatActivity {
                 // Clear the lists, so we don't get duplicates or items from the last search.
                 searchArrayList.clear();
                 searchURLList.clear();
-                searchPicList.clear();
 
                 // Testing only // Log.i("WJH", String.valueOf(totalMatches));
 
@@ -243,12 +245,10 @@ public class WebListActivity extends AppCompatActivity {
         // Defining an array of titles and urls.
         searchArrayList = new ArrayList<String>();
         searchURLList = new ArrayList<String>();
-        searchPicList = new ArrayList<String>();
 
         // Clear the lists, so we don't get duplicates or items from the last search.
         searchArrayList.clear();
         searchURLList.clear();
-        searchPicList.clear();
 
         // Now we get that extra information.
         Intent i = getIntent();
@@ -294,12 +294,14 @@ public class WebListActivity extends AppCompatActivity {
 
                 // Call an intent to go to the weblist screen when you click the about button.
                 // First you define it.
-                Intent webIntent = new Intent(WebListActivity.this, WebViewActivity.class);
+                Intent jcIntent = new Intent(WebListActivity.this, JCView.class);
                 // Put our newly defined title and url in there.
-                webIntent.putExtra("titleIntent", a);
-                webIntent.putExtra("urlIntent", b);
+                jcIntent.putExtra("titleIntent", a);
+                jcIntent.putExtra("urlIntent", b);
+                jcIntent.putExtra("resultAll", myResult);
+                jcIntent.putExtra("searchTerm", theSearchTerm);
                 // Now you call it.
-                startActivity(webIntent);
+                startActivity(jcIntent);
 
 
             }

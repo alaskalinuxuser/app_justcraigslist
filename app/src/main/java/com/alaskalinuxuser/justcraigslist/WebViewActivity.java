@@ -46,7 +46,7 @@ public class WebViewActivity extends AppCompatActivity {
         theTitle = i.getStringExtra("titleIntent");
         theURL = i.getStringExtra("urlIntent");
 
-        Log.i("WJH", theTitle +" " + theURL);
+        // Testing only // Log.i("WJH", theTitle +" " + theURL);
 
         // Let's define that stuff we declared.
         webView = (WebView)findViewById(R.id.webView);

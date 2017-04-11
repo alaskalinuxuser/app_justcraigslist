@@ -39,6 +39,10 @@
         <activity
             android:name=".PickCatActivity"
             android:label="@string/title_activity_pick_cat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".JCView"
+            android:label="@string/title_activity_jcview"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
