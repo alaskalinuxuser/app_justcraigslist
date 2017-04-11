@@ -136,7 +136,7 @@ public class WebListActivity extends AppCompatActivity {
                     }
 
                     // Now regex the data with this pattern.
-                    Pattern patTwo = Pattern.compile("dc:title(.*?)\\&");
+                    Pattern patTwo = Pattern.compile("dc:title(.*?)dc:title");
 
                     // And search for matches in the results.
                     Matcher matTwo = patTwo.matcher(splitString[k]);
@@ -150,10 +150,18 @@ public class WebListActivity extends AppCompatActivity {
 
                             // Testing only // Log.i("WJH", foundNameString);
 
-                            // But we don't want the first 10 characters of garble...
-                            String subString = foundNameString.substring(10);
+                            // To get the length, so we can cut off the last 5 characters, which
+                            // look like garble.
+                            int tempLength = foundNameString.length() - 5;
 
-                            searchArrayList.add(subString);
+                            // But we don't want the first 10 characters of garble...
+                            String subString = foundNameString.substring(10, tempLength);
+
+                            // But the dollar sign is garble, so let's replace it.
+                            String replacedPart = subString.replace("&#x0024;", "$");
+
+                            // And add it to the list!
+                            searchArrayList.add(replacedPart);
 
                         }
                     } catch (Exception e) {
@@ -246,8 +254,8 @@ public class WebListActivity extends AppCompatActivity {
         Intent i = getIntent();
         theSearchTerm = i.getStringExtra("searchTerm");
 
+        // Testing only //
         Log.i("WJH", theSearchTerm);
-
 
 
         // Defining an adapter, to adapt my array list to the correct format.

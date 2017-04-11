@@ -35,6 +35,10 @@
         <activity
             android:name=".WebListActivity"
             android:label="@string/title_activity_web_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PickCatActivity"
+            android:label="@string/title_activity_pick_cat"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

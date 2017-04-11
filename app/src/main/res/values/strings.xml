@@ -21,4 +21,5 @@
         limitations under the License.</string>
     <string name="myGithub">https://github.com/alaskalinuxuser</string>
     <string name="myWebsite">https://thealaskalinuxuser.wordpress.com</string>
+    <string name="title_activity_pick_cat">Pick a category:</string>
 </resources>

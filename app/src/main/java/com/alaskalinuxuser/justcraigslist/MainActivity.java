@@ -35,9 +35,9 @@ import java.net.URLEncoder;
 public class MainActivity extends AppCompatActivity {
 
     // Let's declare our variables, texts, and etc.
-    String cityChoice, urlChoice, minChoice, maxchoice, searchChoice, searchTerm;
+    String cityChoice, urlChoice, minChoice, maxchoice, searchChoice, searchTerm, catChoice, codeChoice;
     int minInt, maxInt;
-    TextView cityView;
+    TextView cityView, catView;
     EditText minPriceEdit, maxPriceEdit, searchNowEdit;
     SharedPreferences myPrefs;
 
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Now let's define and identify our views and texts.
         cityView = (TextView)findViewById(R.id.cityView);
+        catView = (TextView)findViewById(R.id.catView);
         minPriceEdit = (EditText)findViewById(R.id.minPriceEdit);
         maxPriceEdit = (EditText)findViewById(R.id.maxPriceEdit);
         searchNowEdit = (EditText)findViewById(R.id.searchNowEdit);
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             maxchoice = myPrefs.getString("maxPref", null);
             urlChoice = myPrefs.getString("urlPref", null);
             cityChoice = myPrefs.getString("cityPref", null);
+            catChoice = myPrefs.getString("catPref", null);
+            codeChoice = myPrefs.getString("codePref", null);
 
             //Testing only, not needed//Log.i("WJH", "Got saved preferences.");
 
@@ -86,6 +89,15 @@ public class MainActivity extends AppCompatActivity {
             minChoice = "0";
             maxchoice = "1000000";
             searchChoice = "";
+
+        }
+
+        if (catChoice == null) {
+
+            // This is seperate due to the upgrade. Those who were on the old version would have
+            // a null value for code, but a full value for citychoice.
+            codeChoice = "sss";
+            catChoice = "All categories...";
 
         }
 
@@ -113,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         minPriceEdit.setText(minChoice);
         maxPriceEdit.setText(maxchoice);
         searchNowEdit.setText(searchChoice);
+        catView.setText(catChoice);
 
     }
 
@@ -123,6 +136,16 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(getApplicationContext(), PickCityActivity.class);
         // and start that activity expecting a result.
         startActivityForResult(myIntent, 1);
+
+    }
+
+    // Method for the user to pick a category.
+    public void pickCat (View pickView) {
+
+        // And call our intent.
+        Intent myIntent = new Intent(getApplicationContext(), PickCatActivity.class);
+        // and start that activity expecting a result.
+        startActivityForResult(myIntent, 2);
 
     }
 
@@ -165,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
         myPrefs.edit ().putString("maxPref", maxchoice).apply();
         myPrefs.edit ().putString("urlPref", urlChoice).apply();
         myPrefs.edit ().putString("cityPref", cityChoice).apply();
+        myPrefs.edit ().putString("catPref", catChoice).apply();
+        myPrefs.edit ().putString("codePref", codeChoice).apply();
 
     }
 
@@ -196,6 +221,30 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("WJH", "There was no result.");
 
             }
+        } else if (requestCode == 2) { // Our choice of category, if it was OK, not a fail.
+            if(resultCode == Activity.RESULT_OK){
+
+                // Then, go ahead and grab the city they just chose.
+                codeChoice = data.getStringExtra("codeIntent");
+                catChoice = data.getStringExtra("catIntent");
+
+                // Set our city text view to match.
+                catView.setText(catChoice);
+
+                // Testing only.// Log.i("WJH", cityChoice + "/" + urlChoice);
+
+                // Let's update our saved preferences with the user's choice of category.
+                saveMyPrefs();
+
+            }
+
+            // If the result wan not okay...
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+                // Just log that it didn't return a result.
+                Log.i("WJH", "There was no result.");
+
+            }
         }
     }
 
@@ -208,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         String whatSearch = URLEncoder.encode(searchChoice);
 
         //https://fairbanks.craigslist.org/search/sss?format=rss&query=chev*&min_price=0&max_price=999999999999
-        searchTerm = urlChoice + "search/sss?format=rss&query="
+        searchTerm = urlChoice + "search/" + codeChoice + "?format=rss&query="
                 + whatSearch + "&min_price="
                 + minChoice + "&max_price="
                 + maxchoice;
