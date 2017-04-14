@@ -2,175 +2,193 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/24791b81c606f8c3f4e4f70e60a430ffd1f0569a/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_b08782207dbeb6bd53bb81eb7fa9d4b481007e33.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/0012535a34bc06a1d514ca8d323cdc70b4e429e7/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_1622a552f574a5dd2a6ae9a2df17b9bbfd54cf42.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/home/alaskalinuxuser/.android/build-cache/716979817cda113f3977e103efc571de9669d7fd/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_076e5f58403d69cb06189c4b508b0308545c04fc.jar" />
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_076e5f58403d69cb06189c4b508b0308545c04fc/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha9/constraint-layout-solver-1.0.0-alpha9.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6a908fd0803cc5f65b007101002aec06dc7544da">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.0-alpha9_e6227ec2af24dabe88f475e7560488c11bff0d7b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/cdf03c190fa5eabc23e027c0a43635d8170d6678/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f2b64f6a762f61a2379d6a79af03e2ee56eefe0b">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_d9482fee59cde9eb659dffce553a0fe8a469726f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/10efc871cab927dd85fdb256168351ee5668e1c1/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_d4ecb1514c52693a8268342a8c4f35e099edf4fc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/95a88b50dcd97c9bb6eeb3e24f24b3cc9a900bff/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_d4690e02984021e3f66118eeacb953a7dd09a7d1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/24791b81c606f8c3f4e4f70e60a430ffd1f0569a/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_d6450e5ac275f399ef0f7dabd70ca78f8895af2f.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/home/alaskalinuxuser/.android/build-cache/09d586c106bb87ed095e6107924b20b0725b0a1d/output/jars/classes.jar"
-        jumboMode="false"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_7bb2a1fa8ea6c3c8ef4af87e4de8f64260ec1b3c.jar" />
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7bb2a1fa8ea6c3c8ef4af87e4de8f64260ec1b3c/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/707842407ed54dc3603c782399fc62021d27b4d9/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_9a28000b16e6d6dcffd69164eb1a4d5126f7b79e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/0786533d9061d263cc25c4c91f223d78e99117de/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_363e30e91594364cfe75cdc7c9897a8a70885c45.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/09d586c106bb87ed095e6107924b20b0725b0a1d/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_6f898def9b6c2c6dd99000fa4a3e523752d5d3cf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/716979817cda113f3977e103efc571de9669d7fd/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_658bdcf3d8f3bf5ef2fb0e00b745fc9f20867d34.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/0786533d9061d263cc25c4c91f223d78e99117de/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_2ea0426480723c67a06db83fcd23fd4e81716e7a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/c3d0dfd48e31827814532eb57e6110cf53f2c4ee/output/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4874ea02a20fe7fa0adeeab8f72909f5bae37654.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/64dd4aabc7519a5cdf6bf8ce7bbc2fbdd9d514b5/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_645952a91628969789d1b0ddec2acebfb6f61ea9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/alaskalinuxuser/.android/build-cache/2b26e1ecd08919e78642a92900581097b4ecc77b/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_14853cd81ec520f6b8344dbda209fbe6a9e96f15.jar" />
-    </item>
-    <item
-        is-multidex="false"
+        is-multidex="true"
         jar="/home/alaskalinuxuser/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="false"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_c50a48bdb76b448a5729153ed1299580a8585777.jar" />
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_c50a48bdb76b448a5729153ed1299580a8585777/classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/10efc871cab927dd85fdb256168351ee5668e1c1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d4ecb1514c52693a8268342a8c4f35e099edf4fc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/716979817cda113f3977e103efc571de9669d7fd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_658bdcf3d8f3bf5ef2fb0e00b745fc9f20867d34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/95a88b50dcd97c9bb6eeb3e24f24b3cc9a900bff/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d4690e02984021e3f66118eeacb953a7dd09a7d1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/alaskalinuxuser/.android/build-cache/c3d0dfd48e31827814532eb57e6110cf53f2c4ee/output/jars/classes.jar"
-        jumboMode="false"
+        jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/testing/JustCraigslist/app/build/intermediates/pre-dexed/debug/classes_82c667efd32f8f43fb6db3df5fe7a096f36bc31e.jar" />
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_82c667efd32f8f43fb6db3df5fe7a096f36bc31e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/707842407ed54dc3603c782399fc62021d27b4d9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9a28000b16e6d6dcffd69164eb1a4d5126f7b79e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/0786533d9061d263cc25c4c91f223d78e99117de/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2ea0426480723c67a06db83fcd23fd4e81716e7a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/2b26e1ecd08919e78642a92900581097b4ecc77b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_14853cd81ec520f6b8344dbda209fbe6a9e96f15/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b8a57d360a02edbec640c7f632c6cdc147d4ace6">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_f4d74135f8ae8a1ea10809f03b0441bf81c5a1e5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/24791b81c606f8c3f4e4f70e60a430ffd1f0569a/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b08782207dbeb6bd53bb81eb7fa9d4b481007e33/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-alpha9/constraint-layout-solver-1.0.0-alpha9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a908fd0803cc5f65b007101002aec06dc7544da">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.0-alpha9_e6227ec2af24dabe88f475e7560488c11bff0d7b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/0012535a34bc06a1d514ca8d323cdc70b4e429e7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1622a552f574a5dd2a6ae9a2df17b9bbfd54cf42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/c3d0dfd48e31827814532eb57e6110cf53f2c4ee/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_4874ea02a20fe7fa0adeeab8f72909f5bae37654/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/24791b81c606f8c3f4e4f70e60a430ffd1f0569a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d6450e5ac275f399ef0f7dabd70ca78f8895af2f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/0786533d9061d263cc25c4c91f223d78e99117de/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_363e30e91594364cfe75cdc7c9897a8a70885c45/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/09d586c106bb87ed095e6107924b20b0725b0a1d/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_6f898def9b6c2c6dd99000fa4a3e523752d5d3cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/cdf03c190fa5eabc23e027c0a43635d8170d6678/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2b64f6a762f61a2379d6a79af03e2ee56eefe0b">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d9482fee59cde9eb659dffce553a0fe8a469726f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/.android/build-cache/64dd4aabc7519a5cdf6bf8ce7bbc2fbdd9d514b5/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_645952a91628969789d1b0ddec2acebfb6f61ea9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/home/alaskalinuxuser/AndroidStudioProjects/released/JustCraigslist/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_89c31a06ec28b2268c7f22747489f8898734aad1/classes.dex" />
     </item>
 
 </items>

@@ -18,9 +18,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,6 +34,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.net.URLEncoder;
@@ -37,23 +45,36 @@ public class MainActivity extends AppCompatActivity {
     // Let's declare our variables, texts, and etc.
     String cityChoice, urlChoice, minChoice, maxchoice, searchChoice, searchTerm, catChoice, codeChoice;
     int minInt, maxInt;
-    TextView cityView, catView;
+    TextView cityView, catView, tv3, tv6, tv8;
     EditText minPriceEdit, maxPriceEdit, searchNowEdit;
-    SharedPreferences myPrefs;
+    static SharedPreferences myPrefs;
+    static int textColorChoice, colorChoice, backChoice, fabColorChoice;
+    FloatingActionButton fab;
+    Toolbar toolbar;
+    ImageView iV1, iV2, iV3;
+    Drawable drawableMain;
+    LinearLayout llMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         // Now let's define and identify our views and texts.
+        llMain = (LinearLayout)findViewById(R.id.LLMain);
         cityView = (TextView)findViewById(R.id.cityView);
         catView = (TextView)findViewById(R.id.catView);
         minPriceEdit = (EditText)findViewById(R.id.minPriceEdit);
         maxPriceEdit = (EditText)findViewById(R.id.maxPriceEdit);
         searchNowEdit = (EditText)findViewById(R.id.searchNowEdit);
+        tv3 = (TextView)findViewById(R.id.textView3);
+        tv6 = (TextView)findViewById(R.id.textView6);
+        tv8 = (TextView)findViewById(R.id.textView8);
+        iV1 = (ImageView)findViewById(R.id.imageView);
+        iV2 = (ImageView)findViewById(R.id.imageView2);
+        iV3 = (ImageView)findViewById(R.id.pickLocation);
 
         // Set up my shared preferences, to save our user's prefered search...
         myPrefs = this.getSharedPreferences("com.alaskalinuxuser.justcraigslist", Context.MODE_PRIVATE);
@@ -69,6 +90,16 @@ public class MainActivity extends AppCompatActivity {
             cityChoice = myPrefs.getString("cityPref", null);
             catChoice = myPrefs.getString("catPref", null);
             codeChoice = myPrefs.getString("codePref", null);
+            // Let's import our preference for colors and texts...
+            colorChoice = Integer.parseInt(myPrefs.getString("colorPref", null));
+            textColorChoice = Integer.parseInt(myPrefs.getString("textColorPref", null));
+            fabColorChoice = Integer.parseInt(myPrefs.getString("fabColorPref", null));
+            backChoice = Integer.parseInt(myPrefs.getString("backPref", null));
+
+            Log.i("WJH", String.valueOf(colorChoice));
+            Log.i("WJH", String.valueOf(textColorChoice));
+            Log.i("WJH", String.valueOf(fabColorChoice));
+            Log.i("WJH", String.valueOf(backChoice));
 
             //Testing only, not needed//Log.i("WJH", "Got saved preferences.");
 
@@ -89,6 +120,10 @@ public class MainActivity extends AppCompatActivity {
             minChoice = "0";
             maxchoice = "1000000";
             searchChoice = "";
+            textColorChoice = 5;
+            fabColorChoice = 3;
+            backChoice = 1;
+            colorChoice = 4;
 
         }
 
@@ -105,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         setAllTexts();
 
         // Floating action button to be a help button for the user.
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +151,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // Now to set up our color scheme.
+        selectColors();
+
     }
 
     // Method to set the text views.
@@ -245,6 +284,38 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("WJH", "There was no result.");
 
             }
+        } else if (requestCode == 219) { // From settings, and if it was OK, not a fail.
+            if(resultCode == Activity.RESULT_OK){
+
+
+
+                colorChoice = Integer.parseInt(data.getStringExtra("colorChoice"));
+                textColorChoice = Integer.parseInt(data.getStringExtra("textColorChoice"));
+                fabColorChoice = Integer.parseInt(data.getStringExtra("fabColorChoice"));
+                backChoice = Integer.parseInt(data.getStringExtra("backChoice"));
+
+                Log.i("WJH", String.valueOf(colorChoice));
+                Log.i("WJH", String.valueOf(textColorChoice));
+                Log.i("WJH", String.valueOf(fabColorChoice));
+                Log.i("WJH", String.valueOf(backChoice));
+
+                //And let's save our new preferences.
+                myPrefs.edit ().putString("colorPref", String.valueOf(colorChoice)).apply();
+                myPrefs.edit ().putString("textColorPref", String.valueOf(textColorChoice)).apply();
+                myPrefs.edit ().putString("fabColorPref", String.valueOf(fabColorChoice)).apply();
+                myPrefs.edit ().putString("backPref", String.valueOf(backChoice)).apply();
+
+                selectColors();
+
+            }
+
+            // If the result wan not okay...
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+                // Just log that it didn't return a result.
+                Log.i("WJH", "There was no two result.");
+
+            }
         }
     }
 
@@ -289,6 +360,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+
+            // Call an intent to go to the settings screen.
+            // First you define it.
+            Intent settingIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            // Now you call it.
+            startActivityForResult(settingIntent, 219);
+
+            return true;
+        }
+
+        //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
 
             // Of course, we need to tell people about our open source app, the github link for source, etc.
@@ -304,4 +387,375 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // My method to set all the colors.
+    public void selectColors () {
+
+        // Set the title bar color.
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.WHITE);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
+
+        // Set the fab color.
+        switch (fabColorChoice) {
+
+            case 0:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+            case 1:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                break;
+
+        }
+
+        // Set the text color.
+        switch (textColorChoice) {
+
+            case 0:
+                cityView.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                catView.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.CYAN, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                tv6.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                tv8.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                iV1.setBackgroundColor(Color.CYAN);
+                iV2.setBackgroundColor(Color.CYAN);
+                iV3.setBackgroundColor(Color.CYAN);
+                break;
+
+            case 1:
+                cityView.setTextColor(ColorStateList.valueOf(Color.RED));
+                catView.setTextColor(ColorStateList.valueOf(Color.RED));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.RED));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.RED));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.RED));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.RED));
+                tv6.setTextColor(ColorStateList.valueOf(Color.RED));
+                tv8.setTextColor(ColorStateList.valueOf(Color.RED));
+                iV1.setBackgroundColor(Color.RED);
+                iV2.setBackgroundColor(Color.RED);
+                iV3.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                cityView.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                catView.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                tv6.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                tv8.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                iV1.setBackgroundColor(Color.GREEN);
+                iV2.setBackgroundColor(Color.GREEN);
+                iV3.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                cityView.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                catView.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                tv6.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                tv8.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                iV1.setBackgroundColor(Color.GRAY);
+                iV2.setBackgroundColor(Color.GRAY);
+                iV3.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                cityView.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                catView.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                tv6.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                tv8.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                iV1.setBackgroundColor(Color.BLACK);
+                iV2.setBackgroundColor(Color.BLACK);
+                iV3.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                cityView.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                catView.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                tv6.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                tv8.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                iV1.setBackgroundColor(Color.WHITE);
+                iV2.setBackgroundColor(Color.WHITE);
+                iV3.setBackgroundColor(Color.WHITE);
+                break;
+
+            case 6:
+                cityView.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                catView.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.MAGENTA, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);}
+                tv3.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                tv6.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                tv8.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                iV1.setBackgroundColor(Color.MAGENTA);
+                iV2.setBackgroundColor(Color.MAGENTA);
+                iV3.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                cityView.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                catView.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                minPriceEdit.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                maxPriceEdit.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                searchNowEdit.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                drawableMain = searchNowEdit.getBackground();
+                drawableMain.setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);
+                if(Build.VERSION.SDK_INT > 16) {
+                    searchNowEdit.setBackground(drawableMain); // set the new drawable to EditText
+                    minPriceEdit.setBackground(drawableMain);
+                    maxPriceEdit.setBackground(drawableMain);
+                }else{
+                    searchNowEdit.setBackgroundDrawable(drawableMain); // use setBackgroundDrawable because setBackground required API 16
+                    minPriceEdit.setBackgroundDrawable(drawableMain);
+                    maxPriceEdit.setBackgroundDrawable(drawableMain);
+                }
+                tv3.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                tv6.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                tv8.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                iV1.setBackgroundColor(Color.BLUE);
+                iV2.setBackgroundColor(Color.BLUE);
+                iV3.setBackgroundColor(Color.BLUE);
+                break;
+
+        }
+
+        // Set the Background color.
+        switch (backChoice) {
+
+            case 0:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llMain.setBackground(getResources().getDrawable(R.drawable.jindong));
+
+                } else {
+
+                    llMain.setBackgroundDrawable(getResources().getDrawable(R.drawable.jindong));
+
+                }
+
+                break;
+
+            case 1:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llMain.setBackground(getResources().getDrawable(R.drawable.plymouth));
+
+                } else {
+
+                    llMain.setBackgroundDrawable(getResources().getDrawable(R.drawable.plymouth));
+
+                }
+
+                break;
+
+            case 2:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llMain.setBackground(getResources().getDrawable(R.drawable.chair));
+
+                } else {
+
+                    llMain.setBackgroundDrawable(getResources().getDrawable(R.drawable.chair));
+
+                }
+
+                break;
+
+            case 3:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llMain.setBackground(getResources().getDrawable(R.drawable.collie));
+
+                } else {
+
+                    llMain.setBackgroundDrawable(getResources().getDrawable(R.drawable.collie));
+
+                }
+
+                break;
+
+            case 4:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llMain.setBackground(getResources().getDrawable(R.drawable.flower));
+
+                } else {
+
+                    llMain.setBackgroundDrawable(getResources().getDrawable(R.drawable.flower));
+
+                }
+
+                break;
+
+            case 5:
+
+                llMain.setBackgroundColor(Color.GRAY);
+
+                break;
+
+            case 6:
+
+                llMain.setBackgroundColor(Color.BLACK);
+
+                break;
+
+            case 7:
+
+                llMain.setBackgroundColor(Color.WHITE);
+
+                break;
+
+        }
+
+    }
+
 }

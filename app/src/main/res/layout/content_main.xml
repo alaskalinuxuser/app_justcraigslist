@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/LLMain"
     android:layout_height="match_parent"
     android:background="@drawable/jindong"
     android:orientation="vertical"
@@ -49,7 +50,8 @@
             android:hint="@string/searchSug"
             android:inputType="text"
             android:textColor="@color/colorPrimary"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:textColorLink="@android:color/holo_blue_light" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +69,6 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@android:color/holo_blue_light"
-            android:backgroundTint="@android:color/holo_blue_light"
             android:onClick="pickLocation"
             app:srcCompat="@android:drawable/ic_menu_mapmode" />
 

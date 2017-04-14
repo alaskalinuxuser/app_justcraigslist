@@ -1,17 +1,37 @@
+/*  Copyright 2017 by AlaskaLinuxUser (https://thealaskalinuxuser.wordpress.com)
+*
+*   Licensed under the Apache License, Version 2.0 (the "License");
+*   you may not use this file except in compliance with the License.
+*   You may obtain a copy of the License at
+*
+*       http://www.apache.org/licenses/LICENSE-2.0
+*
+*   Unless required by applicable law or agreed to in writing, software
+*   distributed under the License is distributed on an "AS IS" BASIS,
+*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*   See the License for the specific language governing permissions and
+*   limitations under the License.
+*/
 package com.alaskalinuxuser.justcraigslist;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.InputStream;
@@ -22,6 +42,11 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.alaskalinuxuser.justcraigslist.MainActivity.backChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.colorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.fabColorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.textColorChoice;
 
 public class JCView extends AppCompatActivity {
 
@@ -37,6 +62,147 @@ public class JCView extends AppCompatActivity {
         setContentView(R.layout.activity_jcview);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        LinearLayout lljcview = (LinearLayout) findViewById(R.id.LLjcview);
+        try {
+            lljcview.setBackgroundResource(R.drawable.plymouth);
+            setContentView(lljcview);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        LinearLayout theLayout = (LinearLayout) findViewById(R.id.theLayout);
+
+        // Set the Background color.
+
+        switch (backChoice) {
+
+            case 0:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    theLayout.setBackground(getResources().getDrawable(R.drawable.jindong));
+
+                } else {
+
+                    theLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.jindong));
+
+                }
+
+                break;
+
+            case 1:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    theLayout.setBackground(getResources().getDrawable(R.drawable.plymouth));
+
+                } else {
+
+                    theLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.plymouth));
+
+                }
+
+                break;
+
+            case 2:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    theLayout.setBackground(getResources().getDrawable(R.drawable.chair));
+
+                } else {
+
+                    theLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.chair));
+
+                }
+
+                break;
+
+            case 3:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    theLayout.setBackground(getResources().getDrawable(R.drawable.collie));
+
+                } else {
+
+                    theLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.collie));
+
+                }
+
+                break;
+
+            case 4:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    theLayout.setBackground(getResources().getDrawable(R.drawable.flower));
+
+                } else {
+
+                    theLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.flower));
+
+                }
+
+                break;
+
+            case 5:
+
+                theLayout.setBackgroundColor(Color.GRAY);
+
+                break;
+
+            case 6:
+
+                theLayout.setBackgroundColor(Color.BLACK);
+
+                break;
+
+            case 7:
+
+                theLayout.setBackgroundColor(Color.WHITE);
+
+                break;
+
+        }
+
+        // Set the title bar color.
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.WHITE);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
 
         // Define our views.
         titleViewjc = (TextView)findViewById(R.id.titleViewJC);
@@ -112,6 +278,59 @@ public class JCView extends AppCompatActivity {
 
             }
         });
+
+        switch (fabColorChoice) {
+
+            case 0:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+            case 1:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                fabjcBack.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabjcHelp.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabjcWeb.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                break;
+
+        }
+
     }
 
     // This method gets our information.
@@ -220,6 +439,61 @@ public class JCView extends AppCompatActivity {
         titleViewjc.setText(jcTitle);
         dateViewjc.setText(jcDate);
         descripViewjc.setText(jcDesc);
+
+        // Set the text color.
+        switch (textColorChoice) {
+
+            case 0:
+
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.CYAN));
+
+                break;
+
+            case 1:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.RED));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.RED));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                titleViewjc.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                descripViewjc.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                dateViewjc.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+        }
 
     }
 

@@ -15,23 +15,46 @@
 package com.alaskalinuxuser.justcraigslist;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import static com.alaskalinuxuser.justcraigslist.MainActivity.colorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.fabColorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.textColorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.backChoice;
 
 public class AboutActivity extends AppCompatActivity {
+
+    // Declare views...
+    FloatingActionButton fabGit, fabWord, fabBack;
+    Toolbar toolbar;
+    TextView atv1, atv2, atv3;
+    LinearLayout llAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fabGit = (FloatingActionButton) findViewById(R.id.fabGithub);
+        // Define views.
+        atv1 = (TextView)findViewById(R.id.atv1);
+        atv2 = (TextView)findViewById(R.id.atv2);
+        atv3 = (TextView)findViewById(R.id.atv3);
+        llAbout = (LinearLayout)findViewById(R.id.LLAbout);
+
+        // The github floating button.
+        fabGit = (FloatingActionButton) findViewById(R.id.fabGithub);
         fabGit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +64,8 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fabWord = (FloatingActionButton) findViewById(R.id.fabWord);
+        // The wordpress floating button.
+        fabWord = (FloatingActionButton) findViewById(R.id.fabWord);
         fabWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +75,8 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fabBack = (FloatingActionButton) findViewById(R.id.fabReturn);
+        // The back floating button.
+        fabBack = (FloatingActionButton) findViewById(R.id.fabReturn);
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +85,10 @@ public class AboutActivity extends AppCompatActivity {
 
             }
         });
+
+        // And set our colors.
+        selectAboutColors();
+
     }
 
         // When they click on the github icon.
@@ -96,4 +125,247 @@ public class AboutActivity extends AppCompatActivity {
         }
 
 
+    // My method to set all the colors.
+    public void selectAboutColors () {
+
+        // Set the title bar color.
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.WHITE);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
+
+        // Set the fab color.
+        switch (fabColorChoice) {
+
+            case 0:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+            case 1:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                fabBack.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabGit.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabWord.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                break;
+
+        }
+
+        // Set the text color.
+        switch (textColorChoice) {
+
+            case 0:
+
+                atv1.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                atv2.setTextColor(ColorStateList.valueOf(Color.CYAN));
+                atv3.setTextColor(ColorStateList.valueOf(Color.CYAN));
+
+                break;
+
+            case 1:
+                atv1.setTextColor(ColorStateList.valueOf(Color.RED));
+                atv2.setTextColor(ColorStateList.valueOf(Color.RED));
+                atv3.setTextColor(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                atv1.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                atv2.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                atv3.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                atv1.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                atv2.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                atv3.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                atv1.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                atv2.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                atv3.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                atv1.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                atv2.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                atv3.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                atv1.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                atv2.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                atv3.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                atv1.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                atv2.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                atv3.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+        }
+
+        /* Set the Background color.
+        switch (backChoice) {
+
+            case 0:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llAbout.setBackground(getResources().getDrawable(R.drawable.jindong));
+
+                } else {
+
+                    llAbout.setBackgroundDrawable(getResources().getDrawable(R.drawable.jindong));
+
+                }
+
+                break;
+
+            case 1:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llAbout.setBackground(getResources().getDrawable(R.drawable.plymouth));
+
+                } else {
+
+                    llAbout.setBackgroundDrawable(getResources().getDrawable(R.drawable.plymouth));
+
+                }
+
+                break;
+
+            case 2:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llAbout.setBackground(getResources().getDrawable(R.drawable.chair));
+
+                } else {
+
+                    llAbout.setBackgroundDrawable(getResources().getDrawable(R.drawable.chair));
+
+                }
+
+                break;
+
+            case 3:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llAbout.setBackground(getResources().getDrawable(R.drawable.collie));
+
+                } else {
+
+                    llAbout.setBackgroundDrawable(getResources().getDrawable(R.drawable.collie));
+
+                }
+
+                break;
+
+            case 4:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llAbout.setBackground(getResources().getDrawable(R.drawable.flower));
+
+                } else {
+
+                    llAbout.setBackgroundDrawable(getResources().getDrawable(R.drawable.flower));
+
+                }
+
+                break;
+
+            case 5:
+
+                llAbout.setBackgroundColor(Color.GRAY);
+
+                break;
+
+            case 6:
+
+                llAbout.setBackgroundColor(Color.BLACK);
+
+                break;
+
+            case 7:
+
+                llAbout.setBackgroundColor(Color.WHITE);
+
+                break;
+
+        } */
+
     }
+
+}

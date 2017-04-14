@@ -15,8 +15,10 @@
 package com.alaskalinuxuser.justcraigslist;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,6 +40,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.alaskalinuxuser.justcraigslist.MainActivity.backChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.colorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.fabColorChoice;
+import static com.alaskalinuxuser.justcraigslist.MainActivity.textColorChoice;
 
 public class WebListActivity extends AppCompatActivity {
 
@@ -233,6 +241,138 @@ public class WebListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        LinearLayout llweblist = (LinearLayout) findViewById(R.id.LLweblist);
+
+        // Set the Background color.
+        switch (backChoice) {
+
+            case 0:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llweblist.setBackground(getResources().getDrawable(R.drawable.jindong));
+
+                } else {
+
+                    llweblist.setBackgroundDrawable(getResources().getDrawable(R.drawable.jindong));
+
+                }
+
+                break;
+
+            case 1:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llweblist.setBackground(getResources().getDrawable(R.drawable.plymouth));
+
+                } else {
+
+                    llweblist.setBackgroundDrawable(getResources().getDrawable(R.drawable.plymouth));
+
+                }
+
+                break;
+
+            case 2:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llweblist.setBackground(getResources().getDrawable(R.drawable.chair));
+
+                } else {
+
+                    llweblist.setBackgroundDrawable(getResources().getDrawable(R.drawable.chair));
+
+                }
+
+                break;
+
+            case 3:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llweblist.setBackground(getResources().getDrawable(R.drawable.collie));
+
+                } else {
+
+                    llweblist.setBackgroundDrawable(getResources().getDrawable(R.drawable.collie));
+
+                }
+
+                break;
+
+            case 4:
+
+                if(Build.VERSION.SDK_INT > 16) {
+
+                    llweblist.setBackground(getResources().getDrawable(R.drawable.flower));
+
+                } else {
+
+                    llweblist.setBackgroundDrawable(getResources().getDrawable(R.drawable.flower));
+
+                }
+
+                break;
+
+            case 5:
+
+                llweblist.setBackgroundColor(Color.GRAY);
+
+                break;
+
+            case 6:
+
+                llweblist.setBackgroundColor(Color.BLACK);
+
+                break;
+
+            case 7:
+
+                llweblist.setBackgroundColor(Color.WHITE);
+
+                break;
+
+        }
+
+        // Set the title bar color.
+        switch (colorChoice) {
+
+            case 0:
+                toolbar.setBackgroundColor(Color.BLUE);
+                break;
+
+            case 1:
+                toolbar.setBackgroundColor(Color.RED);
+                break;
+
+            case 2:
+                toolbar.setBackgroundColor(Color.GREEN);
+                break;
+
+            case 3:
+                toolbar.setBackgroundColor(Color.GRAY);
+                break;
+
+            case 4:
+                toolbar.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 5:
+                toolbar.setBackgroundColor(Color.WHITE);
+                break;
+
+            case 6:
+                toolbar.setBackgroundColor(Color.MAGENTA);
+                break;
+
+            case 7:
+                toolbar.setBackgroundColor(Color.CYAN);
+                break;
+
+        }
+
         // Define our imageview...
         waitImage = (ImageView)findViewById(R.id.waitImage);
 
@@ -267,8 +407,44 @@ public class WebListActivity extends AppCompatActivity {
 
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-                    /*YOUR CHOICE OF COLOR*/
-                textView.setTextColor(Color.CYAN);
+                // Set the text color.
+                switch (textColorChoice) {
+
+                    case 0:
+
+                        textView.setTextColor(ColorStateList.valueOf(Color.CYAN));
+
+                        break;
+
+                    case 1:
+                        textView.setTextColor(ColorStateList.valueOf(Color.RED));
+                        break;
+
+                    case 2:
+                        textView.setTextColor(ColorStateList.valueOf(Color.GREEN));
+                        break;
+
+                    case 3:
+                        textView.setTextColor(ColorStateList.valueOf(Color.GRAY));
+                        break;
+
+                    case 4:
+                        textView.setTextColor(ColorStateList.valueOf(Color.BLACK));
+                        break;
+
+                    case 5:
+                        textView.setTextColor(ColorStateList.valueOf(Color.WHITE));
+                        break;
+
+                    case 6:
+                        textView.setTextColor(ColorStateList.valueOf(Color.MAGENTA));
+                        break;
+
+                    case 7:
+                        textView.setTextColor(ColorStateList.valueOf(Color.BLUE));
+                        break;
+
+                }
 
                 return view;
 
@@ -309,6 +485,43 @@ public class WebListActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        switch (fabColorChoice) {
+
+            case 0:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                break;
+
+            case 1:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                break;
+
+            case 2:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                break;
+
+            case 3:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                break;
+
+            case 4:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                break;
+
+            case 5:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                break;
+
+            case 6:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                break;
+
+            case 7:
+                fab.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                break;
+
+        }
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
