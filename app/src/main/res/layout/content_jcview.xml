@@ -33,7 +33,7 @@
         <ImageView
             android:id="@+id/imageViewJC"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="175dp"
             app:srcCompat="@drawable/waiticon" />
 
         <TextView
