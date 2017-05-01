@@ -26,10 +26,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,10 +37,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.net.URLEncoder;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnKeyListener{
 
     // Let's declare our variables, texts, and etc.
     String cityChoice, urlChoice, minChoice, maxchoice, searchChoice, searchTerm, catChoice, codeChoice;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     EditText minPriceEdit, maxPriceEdit, searchNowEdit;
     static SharedPreferences myPrefs;
     static int textColorChoice, colorChoice, backChoice, fabColorChoice;
-    FloatingActionButton fab;
+    FloatingActionButton fabMainHelp, fabMainSearch;
     Toolbar toolbar;
     ImageView iV1, iV2, iV3;
     Drawable drawableMain;
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Now let's define and identify our views and texts.
-        llMain = (LinearLayout)findViewById(R.id.LLMain);
+        llMain = (LinearLayout)findViewById(R.id.llmyMain);
         cityView = (TextView)findViewById(R.id.cityView);
         catView = (TextView)findViewById(R.id.catView);
         minPriceEdit = (EditText)findViewById(R.id.minPriceEdit);
@@ -75,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         iV1 = (ImageView)findViewById(R.id.imageView);
         iV2 = (ImageView)findViewById(R.id.imageView2);
         iV3 = (ImageView)findViewById(R.id.pickLocation);
+
+        maxPriceEdit.setOnKeyListener(this);
 
         // Set up my shared preferences, to save our user's prefered search...
         myPrefs = this.getSharedPreferences("com.alaskalinuxuser.justcraigslist", Context.MODE_PRIVATE);
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             textColorChoice = 5;
             fabColorChoice = 3;
             backChoice = 1;
-            colorChoice = 4;
+            colorChoice = 3;
 
         }
 
@@ -140,15 +141,25 @@ public class MainActivity extends AppCompatActivity {
         setAllTexts();
 
         // Floating action button to be a help button for the user.
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabMainHelp = (FloatingActionButton) findViewById(R.id.fabMainHelp);
+        fabMainHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // When clicked, show this handy little help/tip.
                 Snackbar.make(view, "Click the map to choose a location. "
-                        + "Then type in your search terms and click the search button.",
+                                + "Then type in your search terms and click the search button.",
                         Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        // Floating action button to be a help button for the user.
+        fabMainSearch = (FloatingActionButton) findViewById(R.id.fabMainSearch);
+        fabMainSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // When clicked, show this handy little help/tip.
+                searchNow();
             }
         });
 
@@ -319,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void searchNow (View searchView) {
+    public void searchNow () {
 
         // Since we like to search for this, let's save that search for later.
         saveMyPrefs();
@@ -432,35 +443,43 @@ public class MainActivity extends AppCompatActivity {
         switch (fabColorChoice) {
 
             case 0:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
                 break;
 
             case 1:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 break;
 
             case 2:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                 break;
 
             case 3:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                 break;
 
             case 4:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
                 break;
 
             case 5:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
                 break;
 
             case 6:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.MAGENTA));
                 break;
 
             case 7:
-                fab.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabMainHelp.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
+                fabMainSearch.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
                 break;
 
         }
@@ -756,6 +775,22 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override // Our on key event listener....
+    public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+        // if they press the enter key, when they push it down, then....
+        if ( i == keyEvent.KEYCODE_ENTER && keyEvent.getAction() == keyEvent.ACTION_DOWN ) {
+
+            // Log for testing //
+            Log.i("WJH", "Keycode");
+            // Call the log in.
+            searchNow();
+
+        }
+
+        return false;
     }
 
 }

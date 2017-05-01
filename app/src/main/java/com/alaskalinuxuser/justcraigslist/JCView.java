@@ -24,8 +24,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -33,13 +31,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -211,7 +205,7 @@ public class JCView extends AppCompatActivity {
         imageViewjc = (ImageView)findViewById(R.id.imageViewJC);
 
         // Since we may have made it invisable earlier when browsing....
-        imageViewjc.setVisibility(View.VISIBLE);
+        imageViewjc.setVisibility(View.INVISIBLE);
 
         // Now we get that extra information.
         Intent i = getIntent();
@@ -498,6 +492,9 @@ public class JCView extends AppCompatActivity {
     }
 
     public void getPictures() {
+
+        // Since there is a picture, let's make it visable....
+        imageViewjc.setVisibility(View.VISIBLE);
 
         // A little fun graphic to keep them busy....
         imageViewjc.animate().rotation(10800f).setDuration(30000);
