@@ -330,6 +330,12 @@ public class MainActivity extends AppCompatActivity implements View.OnKeyListene
         }
     }
 
+    public void mySearch (View searchView) {
+
+        searchNow();
+
+    }
+
     public void searchNow () {
 
         // Since we like to search for this, let's save that search for later.
