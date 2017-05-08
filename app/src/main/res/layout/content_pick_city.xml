@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LLpickcity"
+    android:id="@+id/LLp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/jindong"
@@ -11,10 +11,45 @@
     tools:context="com.alaskalinuxuser.justcraigslist.PickCityActivity"
     tools:showIn="@layout/activity_pick_city">
 
-    <ListView
-        android:id="@+id/theList"
+    <LinearLayout
+        android:id="@+id/LLPickCity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@android:color/holo_orange_dark" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/searchForCity"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Search for city or location"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:id="@+id/searchIV"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="searchACity"
+                app:srcCompat="@android:drawable/ic_search_category_default" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/theList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/holo_orange_dark" />
+    </LinearLayout>
 
 </LinearLayout>

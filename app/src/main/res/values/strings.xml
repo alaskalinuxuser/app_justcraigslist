@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Just Craigslist</string>
     <string name="action_about">About</string>
-    <string name="title_activity_pick_city">Pick your city:</string>
+    <string name="title_activity_pick_city">Pick your location:</string>
     <string name="whatFor">What are you looking for today?</string>
     <string name="searchSug">Type here and press search icon...</string>
     <string name="minPrice">Minimum Price:</string>
